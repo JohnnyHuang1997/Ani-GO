@@ -21,7 +21,6 @@ const Browse = () => {
 		localStorage.getItem('page') !== undefined
 			? JSON.parse(localStorage.getItem('page'))
 			: 'https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0'
-		// 'https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0'
 	);
 	const [pageButton, setPageButton] = useState(null);
 
@@ -154,26 +153,30 @@ const Browse = () => {
 			) : (
 				<MainContainer>
 					<Filter>
-						<h1>{currentCategory}</h1>
-						<h2>Filter by category:</h2>
+						<FilterName>
+							<h2>Filter by category:</h2>
+							<h1>{currentCategory}</h1>
+						</FilterName>
 
-						{arrayHoldingGenres.map((genre) => {
-							return (
-								<div key={Math.floor(Math.random() * 1400000000)}>
-									<button
-										className={currentCategory === genre ? 'active' : ''}
-										onClick={() => {
-											handleClick(
-												`https://kitsu.io/api/edge/anime?filter[categories]=${genre}&${pageCategory}`
-											);
-											setCurrentCategory(genre);
-										}}
-									>
-										{genre}
-									</button>
-								</div>
-							);
-						})}
+						<FilterContent>
+							{arrayHoldingGenres.map((genre) => {
+								return (
+									<Wrapper key={Math.floor(Math.random() * 1400000000)}>
+										<FilterButton
+											className={currentCategory === genre ? 'active' : ''}
+											onClick={() => {
+												handleClick(
+													`https://kitsu.io/api/edge/anime?filter[categories]=${genre}&${pageCategory}`
+												);
+												setCurrentCategory(genre);
+											}}
+										>
+											{genre}
+										</FilterButton>
+									</Wrapper>
+								);
+							})}
+						</FilterContent>
 					</Filter>
 
 					<Paginationwrapper>
@@ -187,10 +190,6 @@ const Browse = () => {
 							);
 						})}
 					</Paginationwrapper>
-
-					<div>
-						<CategoryName>Anime List</CategoryName>
-					</div>
 
 					<DisplayAnimeWrapper>
 						{anime.map((show) => {
@@ -260,13 +259,40 @@ const MainContainer = styled.div`
 `;
 
 const Filter = styled.div`
-	display: grid;
-	grid-template-columns: 300px 300px 300px 300px 300px 300px;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	column-gap: 2rem;
-	row-gap: 3rem;
-	margin-bottom: 50px;
+`;
+const FilterName = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	h2 {
+		text-transform: uppercase;
+	}
+	h1 {
+		text-transform: uppercase;
+	}
+`;
+
+const Wrapper = styled.div`
+	.active {
+		background-color: var(--blue);
+	}
+`;
+
+const FilterContent = styled.div`
+	display: grid;
+	grid-template-columns: 250px 250px 250px 250px;
+	justify-content: center;
+	align-items: center;
+	column-gap: 1em;
+	row-gap: 1em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-radius: 10px;
 	background: rgb(242, 186, 147);
 	background: linear-gradient(
 		90deg,
@@ -274,39 +300,22 @@ const Filter = styled.div`
 		rgba(231, 134, 77, 0.3772102591036415) 53%,
 		rgba(255, 1, 1, 0.7469362745098039) 100%
 	);
-	width: 100%;
-	padding-bottom: 100px;
-	.active {
-		background-color: var(--purple);
-	}
-	h1 {
-		width: fit-content;
-		border-radius: 10px;
-		text-transform: uppercase;
-	}
-	h2 {
-		text-transform: uppercase;
-		text-align: center;
-		font-weight: 900;
-		color: #ff6200;
-		border: 5px solid #ff6200;
-		border-radius: 15px;
-	}
-	button {
-		font-style: italic;
-		border: none;
-		width: fit-content;
-		padding: 15px;
-		font-size: 15px;
-		border-radius: 10px;
-		text-transform: uppercase;
-		color: white;
-		text-align: center;
-		background-color: #ff6200;
-		&:hover {
-			cursor: pointer;
-			background-color: var(--blue);
-		}
+`;
+
+const FilterButton = styled.button`
+	font-style: italic;
+	border: none;
+	width: fit-content;
+	padding: 1em;
+	font-size: 15px;
+	border-radius: 10px;
+	text-transform: uppercase;
+	color: white;
+	text-align: center;
+	background-color: #ff6200;
+	&:hover {
+		cursor: pointer;
+		background-color: var(--blue);
 	}
 `;
 
@@ -314,8 +323,7 @@ const Paginationwrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 75px;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin: 3em 0 3em 0;
 	align-items: center;
 `;
 
@@ -339,20 +347,14 @@ const Button = styled.button`
 	}
 `;
 
-const CategoryName = styled.h2`
-	text-transform: uppercase;
-	text-decoration: underline;
-`;
-
 const DisplayAnimeWrapper = styled.div`
 	display: grid;
-	grid-template-columns: 300px 300px 300px 300px 300px 300px 300px;
-	grid-row-gap: 35px;
-	grid-column-gap: 10px;
+	grid-template-columns: 250px 250px 250px 250px;
+	column-gap: 3em;
+	row-gap: 3em;
 	justify-content: center;
 	align-items: center;
-	column-gap: 2rem;
-	margin-bottom: 50px;
+	margin: 0 0 3em 0;
 `;
 
 const AnimeWrapper = styled.div`

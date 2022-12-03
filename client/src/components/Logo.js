@@ -13,8 +13,8 @@ const Logo = () => {
 export default Logo;
 const Container = styled.div`
 	display: flex;
+  flex-direction: row;
 	align-items: center;
-	width: fit-content;
 `;
 const ImageLogo = styled.img`
 	width: 75px;
@@ -25,4 +25,5 @@ const Title = styled.p`
 	font-size: 30px;
 	color: white;
 	font-weight: 900;
+  text-align: center;
 `;

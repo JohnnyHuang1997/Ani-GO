@@ -8,7 +8,6 @@ const Footer = () => {
 
 	return (
 		<FooterContainer>
-
 			<TextContainer>
 				<Text
 					onClick={(e) => {
@@ -28,8 +27,8 @@ const Footer = () => {
 				>
 					About
 				</Text>
-        
-        <Text
+
+				<Text
 					onClick={(e) => {
 						e.preventDefault();
 						e.stopPropagation();
@@ -38,41 +37,38 @@ const Footer = () => {
 				>
 					Browse
 				</Text>
+				<CompanyWrapper>
+					<BsFacebook
+						style={{
+							color: 'pink',
+							marginLeft: '15px',
+							marginRight: '15px',
+							width: '40px',
+							height: '40px',
+						}}
+					/>
+					<BsTwitter
+						style={{
+							color: 'pink',
+							marginLeft: '15px',
+							marginRight: '15px',
+							width: '40px',
+							height: '40px',
+						}}
+					/>
+					<BsInstagram
+						style={{
+							color: 'pink',
+							marginLeft: '15px',
+							marginRight: '15px',
+							width: '40px',
+							height: '40px',
+						}}
+					/>
+					<AniText>@Ani-GO 2022</AniText>
+				</CompanyWrapper>
+				<GoTop />
 			</TextContainer>
-
-			<CompanyWrapper>
-				<BsFacebook
-					style={{
-						color: 'pink',
-						marginLeft: '15px',
-						marginRight: '15px',
-						width: '40px',
-						height: '40px',
-					}}
-				/>
-				<BsTwitter
-					style={{
-						color: 'pink',
-						marginLeft: '15px',
-						marginRight: '15px',
-						width: '40px',
-						height: '40px',
-					}}
-				/>
-				<BsInstagram
-					style={{
-						color: 'pink',
-						marginLeft: '15px',
-						marginRight: '15px',
-						width: '40px',
-						height: '40px',
-					}}
-				/>
-				<AniText>@Ani-GO 2022</AniText>
-			</CompanyWrapper>
-
-			<GoTop />
-      
 		</FooterContainer>
 	);
 };
@@ -86,19 +82,18 @@ const FooterContainer = styled.footer`
 `;
 const TextContainer = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 `;
 const Text = styled.p`
-	margin-left: 10px;
-	margin-right: 10px;
+	margin: 1em 1em 1em 1em;
 	font-size: 20px;
 	color: white;
-  cursor: pointer;
-  &:hover {
-    color: pink;
-  }
+	cursor: pointer;
+	&:hover {
+		color: pink;
+	}
 `;
 const CompanyWrapper = styled.div`
 	display: flex;

@@ -1,15 +1,8 @@
 # ANI-GO 
-
-<img src='client/src/images/rengoku.jpeg' style='float:left;width:48%;margin-right:4%;'/> 
-
-Ani-GO is a web info search for anime content. </br>
-What is Anime? </br>
-According to Wikipedia, Anime is a hand-drawn and computer-generated animation originated from Japan.
-</br>
-</br>
-</br>
-</br>
-</br>
+## Final Project
+## SPA built using REACT
+## Backend built using Node.JS
+## MongoDB database
 </br>
 </br>
 
@@ -23,9 +16,15 @@ According to Wikipedia, Anime is a hand-drawn and computer-generated animation o
 - Lastly, Signed-in users can view their 'Tier Ranking' based on how many anime they've watched in their Profile page.
 - A Dark Theme is also included.
 
+
+
+
+</br>
+
 # App Sample
-Based on an Ultra-Wide Monitor
-<img src='client/src/images/browser2.png'/>
+<img src='client/src/images/browser.png'/>
+
+
 
 # Backend
 

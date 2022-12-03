@@ -6,13 +6,12 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const SearchResult = () => {
-
 	const navigate = useNavigate();
 
 	const { searchId } = useParams();
 
 	const { user } = useAuth0();
-  
+
 	const [result, setResult] = useState(null);
 
 	const [pageButton, setPageButton] = useState(null);
@@ -104,64 +103,65 @@ const SearchResult = () => {
 			) : (
 				<>
 					<Container>
-						{result.map((anime) => {
-							return (
-								<ImageContainer key={anime.id}>
-									<Image
-										src={anime.attributes.posterImage.small}
-										alt='poster'
-										onClick={(e) => {
-											e.preventDefault();
-											e.stopPropagation();
-											navigate(`/anime/${anime.id}`);
-										}}
-									/>
-                  
-									<Title
-										onClick={(e) => {
-											e.preventDefault();
-											e.stopPropagation();
-											navigate(`/anime/${anime.id}`);
-										}}
-									>
-										{anime.attributes.titles.en}
-									</Title>
+						<Wrapper>
+							{result.map((anime) => {
+								return (
+									<ImageContainer key={anime.id}>
+										<Image
+											src={anime.attributes.posterImage.small}
+											alt='poster'
+											onClick={(e) => {
+												e.preventDefault();
+												e.stopPropagation();
+												navigate(`/anime/${anime.id}`);
+											}}
+										/>
 
-									<Date>
-										<span>Start</span> &nbsp;
-										{anime.attributes.startDate} &nbsp;
-										<br />
-										<span>End</span> &nbsp;
-										{anime.attributes.endDate}
-									</Date>
+										<Title
+											onClick={(e) => {
+												e.preventDefault();
+												e.stopPropagation();
+												navigate(`/anime/${anime.id}`);
+											}}
+										>
+											{anime.attributes.titles.en}
+										</Title>
 
-									<RankAndType>
-										<Rank>
-											Rank&nbsp;<span>{anime.attributes.popularityRank}</span>
-										</Rank>
-										<Type>{anime.attributes.subtype}</Type>
-									</RankAndType>
+										<Date>
+											<span>Start</span> &nbsp;
+											{anime.attributes.startDate} &nbsp;
+											<br />
+											<span>End</span> &nbsp;
+											{anime.attributes.endDate}
+										</Date>
 
-									<TextWrapper>
-										<Synopsis>{anime.attributes.synopsis}</Synopsis>
-									</TextWrapper>
+										<RankAndType>
+											<Rank>
+												Rank&nbsp;<span>{anime.attributes.popularityRank}</span>
+											</Rank>
+											<Type>{anime.attributes.subtype}</Type>
+										</RankAndType>
 
-									{user && (
-										<div>
-											<FBW
-												anime={anime}
-												addFavorite={addFavorite}
-												addBookmark={addBookmark}
-												addIsWatch={addIsWatch}
-											/>
-										</div>
-									)}
-								</ImageContainer>
-							);
-						})}
-					</Container>
+										<TextWrapper>
+											<Synopsis>{anime.attributes.synopsis}</Synopsis>
+										</TextWrapper>
 
-					<PaginateWrapper>
+										{user && (
+											<div>
+												<FBW
+													anime={anime}
+													addFavorite={addFavorite}
+													addBookmark={addBookmark}
+													addIsWatch={addIsWatch}
+												/>
+											</div>
+										)}
+									</ImageContainer>
+								);
+							})}
+						</Wrapper>
+
+            <PaginateWrapper>
 						{pageButton.map((paginate) => {
 							return (
 								<ButtonWrapper key={Math.floor(Math.random() * 1400000000)}>
@@ -172,6 +172,9 @@ const SearchResult = () => {
 							);
 						})}
 					</PaginateWrapper>
+					</Container>
+
+					
 				</>
 			)}
 		</>
@@ -181,22 +184,24 @@ const SearchResult = () => {
 export default SearchResult;
 
 const Container = styled.div`
-	display: grid;
-	grid-template-columns: 300px 300px 300px 300px 300px;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	column-gap: 15rem;
-	row-gap: 3rem;
-	margin-top: 50px;
-	margin-bottom: 50px;
+`;
+
+const Wrapper = styled.div`
+	display: grid;
+	grid-template-columns: 250px 250px 250px 250px;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
+  margin: 3em 0 3em 0;
+  row-gap: 5em;
+  column-gap: 5em;
 `;
 
 const ImageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
 	border: 1px solid black;
 	max-height: 900px;
 	height: 100%;
@@ -245,7 +250,8 @@ const RankAndType = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	column-gap: 30px;
+  justify-content: center;
+  gap: 1em;
 `;
 
 const Type = styled.p`
@@ -279,9 +285,8 @@ const PaginateWrapper = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: 75px;
-	margin-top: 100px;
-	margin-bottom: 100px;
+	margin: 0 0 5em 0;
+  gap: 5em;
 `;
 
 const ButtonWrapper = styled.div`

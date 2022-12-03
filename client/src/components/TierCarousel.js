@@ -39,16 +39,14 @@ const TierCarousel = (userPoints) => {
 export default TierCarousel;
 
 const Container = styled.div`
-	text-align: center;
-	color: #fefefe;
 	position: relative;
-	width: 220px;
-	margin: 100px auto 0 auto;
+	width: 200px;
+	margin: 2em auto;
 	perspective: 1000px;
 `;
 
 const CarouselContainer = styled.div`
-	position: absolute;
+	/* position: absolute; */
 	width: 50%;
 	height: 50%;
 	transform-style: preserve-3d;
@@ -57,11 +55,6 @@ const CarouselContainer = styled.div`
 
 const Wrapper = styled.div`
 	//COLOR CHANGER DEPENDING ON TIER
-	//TIER 3: CASUAL 100 POINTS   :BRONZE
-	//TIER 2: FAN    1000 POINTS  :GOLD
-	//TIER 1: WEEB   3000 POINTS  :DIAMOND
-	//TIER 0: T.G    10000 POINTS :RUBY
-
 	/* background-color: #C7020C; ruby */
 	/* background-color: #b9f2ff; diamond  */
 	/* background-color: #ffa812; gold */
@@ -84,10 +77,8 @@ const Wrapper = styled.div`
 
 	opacity: 0.5;
 	position: absolute;
-	width: 313px;
-	height: 75px;
-	top: 5px;
-	left: 50%;
+	width: 20em;
+	height: 3em;
 	background-size: cover;
 	box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 	display: flex;
@@ -122,7 +113,6 @@ const Wrapper = styled.div`
 
 const Content = styled.h2`
 	margin: auto;
-	font-size: 2rem;
 	background: rgb(12, 15, 15);
 	background: linear-gradient(
 		90deg,

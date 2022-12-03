@@ -75,7 +75,7 @@ const Forum = () => {
 							return (
 								<PageBox key={Math.floor(Math.random() * 1400000000)}>
 									<Text>
-										<span>{user.nickname}</span>: {message.message}
+										<span>{message.email}</span>: {message.message}
 									</Text>
 								</PageBox>
 							);
@@ -97,11 +97,12 @@ const MainContainer = styled.div`
 `;
 const Header = styled.h1`
 	text-transform: uppercase;
-  color: var(--orange);
+	color: var(--orange);
+	font-family: 'Poppins', sans-serif;
 `;
 const Name = styled.h2`
-	padding: 10px;
 	color: var(--blue);
+	font-family: 'Poppins', sans-serif;
 `;
 const Content = styled.div`
 	border: 1px solid black;
@@ -124,11 +125,11 @@ const Form = styled.form`
 
 const TextArea = styled.textarea`
 	border: none;
-	width: 1000px;
-	height: 30px;
-	padding-left: 15px;
-	padding-bottom: 96px;
-	font-size: 30px;
+	width: fit-content;
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size: 20px;
 	font-family: 'Poppins', sans-serif;
 	resize: none;
 	background-color: var(--white);
@@ -136,10 +137,11 @@ const TextArea = styled.textarea`
 const CharacterCount = styled.p`
 	text-align: center;
 	font-size: 20px;
-	color: purple;
+	font-weight: 900;
+	color: midnightblue;
 	color: ${({ input }) => {
 		if (input.length < 70) {
-			return 'purple';
+			return 'midnightblue';
 		}
 		if (input.length >= 70 && input.length < 100) {
 			return 'yellow';
@@ -150,15 +152,13 @@ const CharacterCount = styled.p`
 `;
 const ButtonSubmit = styled.button`
 	background-color: var(--blue);
-  color: var(--white);
+	color: var(--white);
 	border-radius: 10px;
-	width: 100px;
 	font-weight: 900;
 	font-size: 20px;
 	text-align: center;
 	&:hover {
-		background-color: var(--orange);
-		color: white;
+		color: var(--orange);
 		cursor: pointer;
 	}
 	:disabled {
@@ -170,17 +170,16 @@ const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	font-family: 'Poppins', sans-serif;
-	column-gap: 20px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	column-gap: 1em;
+	margin: 1em 0 1em 0;
 `;
 
 const PageContainer = styled.div`
 	border: 5px solid gainsboro;
-  background-color: seashell;
-	width: 1000px;
+	background-color: seashell;
+	width: 50%;
 	height: 500px;
-	margin-bottom: 290px;
+	margin: 0 0 5em 0;
 	border-radius: 20px;
 	--max-lines: 50;
 	display: -webkit-box;
@@ -190,15 +189,25 @@ const PageContainer = styled.div`
 `;
 
 const PageBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	border: 2px solid var(--purple);
 	border-radius: 30px;
+  margin: 1em 0 1em 1em;
 	width: fit-content;
-  background-color: white;
+	background-color: white;
 `;
 const Text = styled.p`
-	font-size: 20px;
-	font-weight: 900;
+	display: flex;
+	justify-content: flex-start;
+	font-size: 15px;
+  padding-left: 1em;
+  padding-right: 1em;
+	font-family: 'Poppins', sans-serif;
 	span {
 		color: var(--orange);
+		font-weight: 900;
+		font-family: 'Poppins', sans-serif;
 	}
 `;

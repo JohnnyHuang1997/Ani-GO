@@ -26,7 +26,6 @@ const Searchbar = () => {
 						}
 					}}
 				/>
-				<Button onClick={() => setValue('')}>Clear</Button>
 			</Container>
 		</>
 	);
@@ -41,24 +40,9 @@ const Container = styled.div`
 `;
 const Input = styled.input`
 	border-radius: 30px;
-	padding: 15px;
-	padding-left: 100px;
-	padding-right: 100px;
-  border: none;
-  margin-right: 20px;
-  font-size: 25px;
-  font-family: 'Poppins', sans-serif;
-`;
-const Button = styled.button`
-border-radius: 30px;
-	padding: 15px;
-  padding-left: 20px;
-	padding-right: 20px;
-  border: none;
-  cursor: pointer;
-  background-color: white;
-  color: #ff6200;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 900;
+  padding: 5px 5px 5px 15px;
+	border: none;
+	font-size: 20px;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
 `;

@@ -48,15 +48,12 @@ const Carousel = () => {
 export default Carousel;
 
 const Container = styled.div`
-	text-align: center;
-	color: #fefefe;
 	position: relative;
 	width: 320px;
-	margin: 100px auto 0 auto;
+	margin: 5em auto;
 	perspective: 1000px;
 `;
 const CarouselContainer = styled.div`
-	position: absolute;
 	width: 100%;
 	height: 100%;
 	transform-style: preserve-3d;
@@ -64,10 +61,10 @@ const CarouselContainer = styled.div`
 `;
 const Wrapper = styled.div`
 	position: absolute;
-	width: 300px;
-	height: 187px;
+	width: 19em;
+	height: 12em;
 	top: 20px;
-	left: 10px;
+  left: 15%; 
 	background-color: black;
 	opacity: 0.8;
 	background-size: cover;

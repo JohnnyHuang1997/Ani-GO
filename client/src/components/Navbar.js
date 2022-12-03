@@ -25,6 +25,7 @@ const Navbar = () => {
 				}}
 			>
 				<Logo />
+        
 			</LogoContainer>
 
 			<NavbarWrapper>
@@ -68,10 +69,17 @@ const MainContainer = styled.nav`
 	padding: 20px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-evenly;
+  align-items: center;
+  /* width: fit-content; */
+  gap: 5em;
 `;
 const LogoContainer = styled.div`
 	cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 const NavbarWrapper = styled.div`
 	display: flex;

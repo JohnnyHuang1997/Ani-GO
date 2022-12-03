@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
-
 	const { user, isAuthenticated } = useAuth0();
 
 	const navigate = useNavigate();
@@ -108,62 +107,63 @@ const Home = () => {
 		<>
 			{!trendingAnime ? (
 				<div>
-          <Spinner/>
-        </div>
+					<Spinner />
+				</div>
 			) : (
 				<>
-					<CarouselWrapper>
-						<Carousel />
-					</CarouselWrapper>
+					<BigContainer>
+						<CarouselWrapper>
+							<Carousel />
+						</CarouselWrapper>
 
-					<MainContainer>
 						<Header>
 							<h2>Trending Animes</h2>
 						</Header>
 
-						{trendingAnime.map((anime) => {
-							return (
-								<ImageContainer key={anime.id}>
-									<Image
-										src={anime.attributes.posterImage.small}
-										alt='anime-poster'
-										onClick={(e) => {
-											e.preventDefault();
-											e.stopPropagation();
-											navigate(`/anime/${anime.id}`);
-										}}
-									/>
-									<Title
-										onClick={(e) => {
-											e.preventDefault();
-											e.stopPropagation();
-											navigate(`/anime/${anime.id}`);
-										}}
-									>
-										{anime.attributes.titles.en}
-									</Title>
+						<ImgContainer>
+							{trendingAnime.map((anime) => {
+								return (
+									<ImageContainer key={anime.id}>
+										<Image
+											src={anime.attributes.posterImage.small}
+											alt='anime-poster'
+											onClick={(e) => {
+												e.preventDefault();
+												e.stopPropagation();
+												navigate(`/anime/${anime.id}`);
+											}}
+										/>
+										<Title
+											onClick={(e) => {
+												e.preventDefault();
+												e.stopPropagation();
+												navigate(`/anime/${anime.id}`);
+											}}
+										>
+											{anime.attributes.titles.en}
+										</Title>
 
-									<RankAndType>
-										<Rank>
-											Rank&nbsp;<span>{anime.attributes.popularityRank}</span>
-										</Rank>
-										<Subtype>{anime.attributes.subtype}</Subtype>
-									</RankAndType>
+										<RankAndType>
+											<Rank>
+												Rank&nbsp;<span>{anime.attributes.popularityRank}</span>
+											</Rank>
+											<Subtype>{anime.attributes.subtype}</Subtype>
+										</RankAndType>
 
-									{/* {FAV/BOOK/WATCHED BUTTON} */}
-									{user && (
-										<div>
-											<FBW
-												anime={anime}
-												addFavorite={addFavorite}
-												addBookmark={addBookmark}
-												addIsWatch={addIsWatch}
-											/>
-										</div>
-									)}
-								</ImageContainer>
-							);
-						})}
+										{user && (
+											<div>
+												<FBW
+													anime={anime}
+													addFavorite={addFavorite}
+													addBookmark={addBookmark}
+													addIsWatch={addIsWatch}
+												/>
+											</div>
+										)}
+									</ImageContainer>
+								);
+							})}
+						</ImgContainer>
 
 						<ViewMore
 							onClick={(e) => {
@@ -174,7 +174,7 @@ const Home = () => {
 						>
 							browse the collection
 						</ViewMore>
-					</MainContainer>
+					</BigContainer>
 				</>
 			)}
 		</>
@@ -183,20 +183,28 @@ const Home = () => {
 
 export default Home;
 
-const MainContainer = styled.div`
+const BigContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+const ImgContainer = styled.div`
 	display: grid;
 	grid-template-columns: 300px 300px 300px 300px;
 	justify-content: center;
 	align-items: center;
 	column-gap: 2rem;
 	row-gap: 3rem;
-	margin-top: 500px;
-	margin-bottom: 200px;
 `;
 
 const Header = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 23em 0 3em 0;
 	h2 {
 		text-transform: uppercase;
 		text-align: center;
@@ -206,7 +214,7 @@ const Header = styled.div`
 
 const CarouselWrapper = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 `;
@@ -276,6 +284,5 @@ const ViewMore = styled.h2`
 	text-align: center;
 	font-family: 'Poppins', sans-serif;
 	cursor: pointer;
+	margin: 3em 0 3em 0;
 `;
-
-

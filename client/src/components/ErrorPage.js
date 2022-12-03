@@ -25,7 +25,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 175px;
   height: 100vh;
   p{
     font-size: 50px;

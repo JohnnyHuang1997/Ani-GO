@@ -1,20 +1,19 @@
 import Rating from './Rating';
 import Spinner from './Spinner';
 import TierCarousel from './TierCarousel';
-import {AiFillEye, AiFillStar} from "react-icons/ai";
+import { AiFillEye, AiFillStar } from 'react-icons/ai';
 import { FaBookmark } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Profile = () => {
-
 	const { user, isAuthenticated } = useAuth0();
 
 	const [favoriteAnime, setFavoriteAnime] = useState(null);
 	const [bookmarkAnime, setBookmarkAnime] = useState(null);
 	const [watchedAnime, setWatchedAnime] = useState([]);
-  
+
 	const [flag, setFlag] = useState(true);
 	const [userPoints, setUserPoints] = useState(0);
 
@@ -51,7 +50,6 @@ const Profile = () => {
 		});
 	};
 
-
 	return (
 		<>
 			{!isAuthenticated &&
@@ -63,7 +61,6 @@ const Profile = () => {
 				</div>
 			) : (
 				<Container>
-
 					<ProfileWrapper>
 						<Name>
 							Welcome back,&nbsp;<span>{user?.name}</span>
@@ -71,7 +68,15 @@ const Profile = () => {
 					</ProfileWrapper>
 
 					<TierChartContainer>
-						<Chart>Tier list</Chart>
+						<div>
+							<Chart>
+								Tier list <br /> <br />
+								How it works <br />
+								<br />
+								Each watched anime earns you 100 points! Simple as that!
+							</Chart>
+						</div>
+
 						<Tier3>
 							100 <span>bronze: casual</span>
 						</Tier3>
@@ -81,9 +86,9 @@ const Profile = () => {
 						<Tier1>
 							3000+ <span>diamond: weeb</span>
 						</Tier1>
-            <Tier0>
-              10,000+ <span>ruby: touch some grass</span>
-            </Tier0>
+						<Tier0>
+							10,000+ <span>ruby: touch some grass</span>
+						</Tier0>
 					</TierChartContainer>
 
 					<TierSystem>
@@ -93,8 +98,9 @@ const Profile = () => {
 					</TierSystem>
 
 					<ListWrapper>
-						<h2>Favorites &nbsp; <AiFillStar/></h2>
-
+						<Header>
+							Favorites &nbsp; <AiFillStar />
+						</Header>
 						<FavoriteContainer>
 							{favoriteAnime?.map((anime) => {
 								return (
@@ -111,25 +117,31 @@ const Profile = () => {
 							})}
 						</FavoriteContainer>
 
-						<h2>Bookmarked &nbsp; <FaBookmark/></h2>
+						<div>
+							<Header>
+								Bookmarked &nbsp; <FaBookmark />
+							</Header>
 
-						<BookmarkContainer>
-							{bookmarkAnime?.map((anime) => {
-								return (
-									<Bookmarks key={anime.id}>
-										<img src={anime.image} alt='anime-poster' />
-										<p>{anime.name}</p>
-										<button
-											onClick={() => handleDeleteContent(anime, 'bookmarks')}
-										>
-											x
-										</button>
-									</Bookmarks>
-								);
-							})}
-						</BookmarkContainer>
+							<BookmarkContainer>
+								{bookmarkAnime?.map((anime) => {
+									return (
+										<Bookmarks key={anime.id}>
+											<img src={anime.image} alt='anime-poster' />
+											<p>{anime.name}</p>
+											<button
+												onClick={() => handleDeleteContent(anime, 'bookmarks')}
+											>
+												x
+											</button>
+										</Bookmarks>
+									);
+								})}
+							</BookmarkContainer>
+						</div>
 
-						<h2>Watched List &nbsp; <AiFillEye/></h2>
+						<Header>
+							Watched List &nbsp; <AiFillEye />
+						</Header>
 
 						<WatchedContainer>
 							{watchedAnime?.map((anime) => {
@@ -143,12 +155,11 @@ const Profile = () => {
 											x
 										</button>
 
-										<Rating anime={anime}/>
+										<Rating anime={anime} />
 									</WatchedList>
 								);
 							})}
 						</WatchedContainer>
-
 					</ListWrapper>
 				</Container>
 			)}
@@ -176,14 +187,13 @@ const ProfileWrapper = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-  margin-top: 30px;
+	margin: 2em 0 2em 0;
 `;
 
 const Name = styled.p`
 	text-align: center;
 	text-transform: uppercase;
 	font-family: 'Poppins', sans-serif;
-	font-weight: 500;
 	font-size: 30px;
 	span {
 		font-weight: 900;
@@ -197,12 +207,12 @@ const Name = styled.p`
 const TierChartContainer = styled.div`
 	border: 5px solid var(--purple);
 	border-radius: 10px;
-	padding-left: 35px;
-	padding-right: 35px;
+	padding-left: 2em;
+	padding-right: 2em;
 	background-color: var(--blue);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 `;
 
 const Chart = styled.h2`
@@ -236,10 +246,10 @@ const Tier1 = styled.h2`
 `;
 
 const Tier0 = styled.h2`
-color: white;
-font-family: 'Poppins', sans-serif;
+	color: white;
+	font-family: 'Poppins', sans-serif;
 	span {
-		color: #C7020C;
+		color: #c7020c;
 	}
 `;
 
@@ -261,7 +271,7 @@ const TierColor = styled.h2`
 		if (userPoints >= 3000 && userPoints < 10000) {
 			return '#b9f2ff';
 		}
-    if (userPoints >= 10000) {
+		if (userPoints >= 10000) {
 			return '#C7020C';
 		}
 	}};
@@ -275,15 +285,15 @@ const ListWrapper = styled.div`
 	margin-top: 300px;
 	margin-bottom: 300px;
 `;
+const Header = styled.h2``;
 
 const FavoriteContainer = styled.div`
 	display: grid;
-	grid-template-columns: 300px 300px 300px 300px 300px 300px;
+	grid-template-columns: 200px 200px 200px 200px;
 	justify-content: center;
 	align-items: center;
 	column-gap: 4rem;
 	row-gap: 3rem;
-	max-height: fit-content;
 `;
 
 const Favorites = styled.div`
@@ -330,7 +340,7 @@ const Favorites = styled.div`
 
 const BookmarkContainer = styled.div`
 	display: grid;
-	grid-template-columns: 300px 300px 300px 300px 300px 300px;
+	grid-template-columns: 200px 200px 200px 200px;
 	justify-content: center;
 	align-items: center;
 	column-gap: 4rem;
@@ -376,7 +386,7 @@ const Bookmarks = styled.div`
 
 const WatchedContainer = styled.div`
 	display: grid;
-	grid-template-columns: 300px 300px 300px 300px 300px 300px;
+	grid-template-columns: 200px 200px 200px 200px;
 	justify-content: center;
 	align-items: center;
 	column-gap: 4rem;

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { BsFillMoonFill } from 'react-icons/bs';
 
-
 const DarkMode = () => {
-
 	let clickedClass = 'clicked';
 	const body = document.body;
 	const lightTheme = 'light';
@@ -21,7 +19,6 @@ const DarkMode = () => {
 	}
 
 	const switchTheme = (e) => {
-    
 		if (theme === darkTheme) {
 			body.classList.replace(darkTheme, lightTheme);
 			e.target.classList.remove(clickedClass);
@@ -41,7 +38,7 @@ const DarkMode = () => {
 			id='darkMode'
 			onClick={(e) => switchTheme(e)}
 		>
-			<BsFillMoonFill style={{width:"35px", height:"35px"}}/>
+			<BsFillMoonFill style={{ width: '35px', height: '35px' }} />
 		</Dark>
 	);
 };
@@ -49,15 +46,12 @@ const DarkMode = () => {
 export default DarkMode;
 
 const Dark = styled.div`
-	background-size: 30px 30px;
-	width: 45px;
-	height: 45px;
 	filter: grayscale(100%);
-	border: none;
-	border-radius: 50%;
-  position: relative;
-  right: 10%;
-  top: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+  margin-right: 5em;
 	transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
 	&:hover {
 		filter: none;

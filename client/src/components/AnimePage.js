@@ -91,9 +91,12 @@ const AnimePage = () => {
 				</div>
 			) : (
 				<Container>
-					{anime.attributes.coverImage && (
+          <CoverContainer>
+            {anime.attributes.coverImage && (
 						<CoverImage src={anime.attributes.coverImage.original} alt='' />
 					)}
+          </CoverContainer>
+					
 
 					<MainContent>
 						<ImageWrapper>
@@ -166,11 +169,13 @@ const Container = styled.div`
 		font-weight: 900;
 	}
 `;
+const CoverContainer = styled.div`
+display: flex;
+`;
 
 const CoverImage = styled.img`
-	height: 600px;
 	width: 100%;
-	object-fit: cover;
+	object-fit: contain;
 `;
 
 const MainContent = styled.div`
@@ -178,15 +183,15 @@ const MainContent = styled.div`
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
-  column-gap: 40px;
-	margin-top: 200px;
-	margin-bottom: 200px;
-
-  
+  column-gap: 5em;
+  margin: 5em 0 5em 0;
 `;
 
 //IMAGE WRAPPER START
-const ImageWrapper = styled.div``;
+const ImageWrapper = styled.div`
+  min-width: 500px;
+  min-height: 500px;
+`;
 
 const Image = styled.img`
 	max-width: 500px;
@@ -211,11 +216,9 @@ const AnimeDetail = styled.div`
 	flex-direction: column;
 	align-items: center;
   justify-content: space-evenly;
-
+  padding: 0 3em 0 3em;
 	--border-size: 3px;
 	--border-angle: 0turn;
-	width: 60vmin;
-	height: 50vmin;
 	background-image: conic-gradient(
 			from var(--border-angle),
 			#213,
@@ -294,17 +297,16 @@ const Ranking = styled.p`
 const SynopsisWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-	margin-bottom: 50px;
+  border: 1px solid var(--purple);
 `;
 const Synopsis = styled.p`
 	text-align: center;
 	font-family: 'Poppins', sans-serif;
 	font-size: 30px;
 	color: white;
-	width: 1500px;
-	margin-bottom: 50px;
+  line-height: 50px;
 	span {
 		text-transform: uppercase;
 		border: 3px solid white;

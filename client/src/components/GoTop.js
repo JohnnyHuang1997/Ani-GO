@@ -19,7 +19,7 @@ const GoTop = () => {
 						width: '50px',
 						height: '50px',
 						position: 'absolute',
-            cursor:"pointer"
+						cursor: 'pointer',
 					}}
 				/>
 			</Arrow>
@@ -30,7 +30,8 @@ const GoTop = () => {
 export default GoTop;
 
 const Arrow = styled.div`
-position: relative;
-left: 50%;
-bottom: 170px;
+	margin: 2em 0 0 0;
+  position: relative;
+  right: 25px;
+  
 `;
