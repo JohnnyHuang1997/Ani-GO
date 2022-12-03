@@ -248,14 +248,12 @@ const deleteAnime = async (req, res) => {
 
 	try {
 		await client.connect();
-		console.log('Connected');
 
 		const db = client.db('anigo_1');
 
 		const result = await db
 			.collection('user')
 			.update({ email }, { $unset: { [`${collectionId}.${bodyId}`]: '' } });
-		// console.log(result);
 
 		res.status(201).json({
 			status: 201,
@@ -267,7 +265,6 @@ const deleteAnime = async (req, res) => {
 		res.status(500).json({ status: 500, data: req.body, message: err.message });
 	}
 	client.close();
-	console.log('Disconnected');
 };
 /////////////////////////////////////////////////////////////////
 
