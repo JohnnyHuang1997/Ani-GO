@@ -195,6 +195,13 @@ const Browse = () => {
 						{anime.map((show) => {
 							return (
 								<AnimeWrapper key={show.id}>
+									<RatingDiv>
+										<AvgRateText className='rate'>rating</AvgRateText>
+										<AvgRating className='rating'>
+											{show.attributes.averageRating}
+										</AvgRating>
+									</RatingDiv>
+
 									<ImagePoster
 										src={show.attributes.posterImage.small}
 										alt='anime-poster'
@@ -345,6 +352,29 @@ const Button = styled.button`
 		background-color: var(--purple);
 		color: white;
 	}
+`;
+
+const RatingDiv = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+`;
+const AvgRateText = styled.p`
+	text-transform: uppercase;
+	font-weight: 900;
+	font-family: 'Poppins', sans-serif;
+	&:hover + .rating {
+		display: block;
+		color: #ff6200;
+	}
+`;
+
+const AvgRating = styled.p`
+	display: none;
+	font-weight: 900;
+	font-family: 'Poppins', sans-serif;
 `;
 
 const DisplayAnimeWrapper = styled.div`

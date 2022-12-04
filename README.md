@@ -1,8 +1,10 @@
 # ANI-GO 
 ## Final Project
-## SPA built using REACT
-## Backend built using Node.JS
-## MongoDB database
+- SPA built using REACT
+- Backend built using Node.JS
+- MongoDB database
+- Auth0 for sign-in/authentication
+- Will require mondoDB to fully use the website
 </br>
 </br>
 

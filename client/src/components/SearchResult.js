@@ -192,7 +192,7 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
 	display: grid;
-	grid-template-columns: 250px 250px 250px 250px;
+	grid-template-columns: 200px 200px 200px 200px;
 	justify-content: center;
 	align-items: center;
 	text-align: center;

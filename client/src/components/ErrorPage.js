@@ -10,7 +10,7 @@ const ErrorPage = () => {
         <Message>An unknown error has occurred.</Message>
         <p>
           Please try refreshing the page, or <br/>
-          <a href="https://www.concordia.ca/contact.html">contact support</a> if
+          <a href="mailto: johnnyhuang15@hotmail.com">contact support</a> if
           the problem persists.
         </p>
       </Container>
@@ -28,6 +28,7 @@ const Container = styled.div`
   height: 100vh;
   p{
     font-size: 50px;
+    text-align: center;
   }
   a {
     text-align: center;
@@ -44,4 +45,5 @@ const Container = styled.div`
 const Message = styled.p`
   font-weight: bold;
   font-size: 50px;
+  text-align: center;
 `;
